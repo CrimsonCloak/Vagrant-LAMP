@@ -12,12 +12,26 @@ readonly PROVISIONING_SCRIPTS="/vagrant/provisioning"
 # Location of files to be copied to this server
 readonly PROVISIONING_FILES="${PROVISIONING_SCRIPTS}/files"
 
+# Allow for SSH 
+ufw allow 22
 
+## Install Apache
 apt-get update
 apt-get install -y apache2
 
 cp "${PROVISIONING_FILES}/index.html" /var/www/html/
 
-ufw allow 22
+
 ufw allow 80
+
+## Install SQL server
+
+apt install -y mysql-server
+
+
+## Install PHP
+
+apt install -y php libapache2-mod-php php-mysql
+
+## Enable firewall
 ufw --force enable
