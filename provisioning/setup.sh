@@ -29,7 +29,8 @@ apt-get install -y apache2
 cp "${PROVISIONING_FILES}/index.html" /var/www/html/
 cp "${PROVISIONING_FILES}/info.php" /var/www/html/
 cp "${PROVISIONING_FILES}/nameslist.php" /var/www/html/
-
+cp "${PROVISIONING_FILES}/styles.css" /var/www/html/
+## Fix cp commands so I don't do all of them individually
 
 ufw allow 80
 
