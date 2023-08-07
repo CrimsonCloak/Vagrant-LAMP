@@ -28,7 +28,7 @@ apt-get install -y apache2
 
 cp "${PROVISIONING_FILES}/index.html" /var/www/html/
 cp "${PROVISIONING_FILES}/info.php" /var/www/html/
-
+cp "${PROVISIONING_FILES}/nameslist.php" /var/www/html/
 
 
 ufw allow 80
