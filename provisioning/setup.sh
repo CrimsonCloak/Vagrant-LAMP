@@ -12,6 +12,13 @@ readonly PROVISIONING_SCRIPTS="/vagrant/provisioning"
 # Location of files to be copied to this server
 readonly PROVISIONING_FILES="${PROVISIONING_SCRIPTS}/files"
 
+
+readonly DATABASE_ROOT_PASSWORD="test"
+readonly DATABASE_NAME="data"
+readonly DATABASE_USER="php"
+readonly DATABASE_PASSWORD="phptest"
+
+
 # Allow for SSH 
 ufw allow 22
 
@@ -28,15 +35,24 @@ ufw allow 80
 
 ## Install SQL server
 
-apt install -y mysql-server
+apt install -y mariadb-server
 
-## Installation script
-
-# no -> password validation
-# y -> remove anonymous users
-# y -> disallow root login remotely
-# y -> remove test database
-# y -> reload privilige tables
+## Create and configure users and database
+if is_mysql_root_password_empty; then
+  mysql <<_EOF_
+    SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${DATABASE_ROOT_PASSWORD}');
+    DELETE FROM mysql.user WHERE User='';
+    DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+    DROP DATABASE IF EXISTS test;
+    DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
+    FLUSH PRIVILEGES;
+_EOF_
+fi
+  mysql --user=root --password="${DATABASE_ROOT_PASSWORD}" << _EOF_
+  CREATE DATABASE IF NOT EXISTS ${DATABASE_NAME};
+  GRANT ALL ON ${DATABASE_NAME}.* TO '${DATABASE_USER}'@'%' IDENTIFIED BY '${DATABASE_PASSWORD}';
+  FLUSH PRIVILEGES;
+_EOF_
 
 ## Install PHP
 
