@@ -38,6 +38,7 @@ ufw allow 80
 apt install -y mariadb-server
 
 ## Create and configure users and database
+
 if is_mysql_root_password_empty; then
   mysql <<_EOF_
     SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${DATABASE_ROOT_PASSWORD}');
@@ -48,10 +49,15 @@ if is_mysql_root_password_empty; then
     FLUSH PRIVILEGES;
 _EOF_
 fi
+
+# Create the database
   mysql --user=root --password="${DATABASE_ROOT_PASSWORD}" << _EOF_
   CREATE DATABASE IF NOT EXISTS ${DATABASE_NAME};
   GRANT ALL ON ${DATABASE_NAME}.* TO '${DATABASE_USER}'@'%' IDENTIFIED BY '${DATABASE_PASSWORD}';
   FLUSH PRIVILEGES;
+  USE ${DATABASE_NAME};
+  CREATE TABLE IF NOT EXISTS people (LastName varchar(255),FirstName varchar(255));
+  INSERT INTO people (LastName, FirstName) VALUES ('Bond','James'), ('Torvalds', 'Linus'),('Guy','Shy');
 _EOF_
 
 ## Install PHP
