@@ -20,6 +20,8 @@ apt-get update
 apt-get install -y apache2
 
 cp "${PROVISIONING_FILES}/index.html" /var/www/html/
+cp "${PROVISIONING_FILES}/info.php" /var/www/html/
+
 
 
 ufw allow 80
@@ -28,6 +30,13 @@ ufw allow 80
 
 apt install -y mysql-server
 
+## Installation script
+
+# no -> password validation
+# y -> remove anonymous users
+# y -> disallow root login remotely
+# y -> remove test database
+# y -> reload privilige tables
 
 ## Install PHP
 
