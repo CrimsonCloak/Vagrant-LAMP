@@ -42,28 +42,23 @@ $db = null;
 </table>
 
 
-<!-- 
-<form action="#" method="post">
+
+
+<form action="add_name.php" method="post">
 
 <?php
- $FirstName = $LastName = $message = "";
+ $FirstName = $LastName = "";
 ?>
-<label for="Name">Name:</label> <br>
-<input type="text" id="Name" name="Name" required>
+<label for="FirstName">First Name:</label> <br>
+<input type="text" id="FirstName" name="FirstName" required>
 <br>
 
-<label for="Email">Email address:</label> <br>
-<input type="text" name="Email" id="Email" required> <br>
-
-<label for="Updates">I would like to receive updates and news related to my PHP skills.</label> <br>
-<input type="checkbox" name="Updates" id="Updates"><br>
+<label for="LastName">Last Name:</label> <br>
+<input type="text" name="LastName" id="LastNaùe" required> <br>
 
 <input type="submit" value="Send">
 </form>
 
-<?php
-require 'contact_form.php';
-?> -->
 
 
 

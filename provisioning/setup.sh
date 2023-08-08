@@ -29,6 +29,7 @@ apt-get install -y apache2
 cp "${PROVISIONING_FILES}/index.html" /var/www/html/
 cp "${PROVISIONING_FILES}/info.php" /var/www/html/
 cp "${PROVISIONING_FILES}/nameslist.php" /var/www/html/
+cp "${PROVISIONING_FILES}/add_name.php" /var/www/html/
 cp "${PROVISIONING_FILES}/styles.css" /var/www/html/
 ## Fix cp commands so I don't do all of them individually
 
@@ -57,7 +58,8 @@ fi
   GRANT ALL ON ${DATABASE_NAME}.* TO '${DATABASE_USER}'@'%' IDENTIFIED BY '${DATABASE_PASSWORD}';
   FLUSH PRIVILEGES;
   USE ${DATABASE_NAME};
-  CREATE TABLE IF NOT EXISTS people (LastName varchar(255),FirstName varchar(255));
+  DROP TABLE IF EXISTS people;
+  CREATE TABLE people (LastName varchar(255),FirstName varchar(255));
   INSERT INTO people (LastName, FirstName) VALUES ('Bond','James'), ('Torvalds', 'Linus'),('Guy','Shy');
 _EOF_
 
