@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Name list</title>
+  <p><a href="index.html">Return to landing page</a></p>
 </head>
 <body>
 <style><?php include 'styles.css'; ?></style>
@@ -12,6 +13,7 @@
     <th>First name</th>
   </tr>
 <?php
+echo "<h2>Employees</h2>";
 $user = "php";
 $password = "phptest";
 $database = "data";
@@ -19,7 +21,6 @@ $table = "people";
 
 try {
   $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
-  echo "<h2>Employees</h2> <br />\n"; 
 
   $data = $db->query("SELECT FirstName FROM $table")->fetchAll();
   foreach ($data as $row) {
