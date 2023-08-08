@@ -14,29 +14,37 @@
   </tr>
 <?php
 echo "<h2>Employees</h2>";
-$user = "php";
-$password = "phptest";
-$database = "data";
-$table = "people";
+loadAllPeople();
+function loadAllPeople(){
+  $user = "php";
+  $password = "phptest";
+  $database = "data";
+  $table = "people";
+  try {
+    $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+  
+    $data = $db->query("SELECT FirstName, LastName FROM $table")->fetchAll();
+    foreach ($data as $row) {
+      echo "<tr> <td>";
+      echo $row['FirstName'] . "<br>";
+      echo $row['LastName']. "<br>";
+      echo "</td> </tr>";
+      $db = null;
+  } 
+  } catch (PDOException $e) {
+      print "Error!: " . $e->getMessage() . "<br/>";
+      die();
+  }
 
-try {
-  $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
 
-  $data = $db->query("SELECT FirstName, LastName FROM $table")->fetchAll();
-  foreach ($data as $row) {
-    echo "<tr> <td>";
-    echo $row['FirstName'] . "<br>";
-    echo $row['LastName']. "<br>";
-    echo "</td> </tr>";
-} 
-} catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-    die();
+
 }
 
 
 
-$db = null;
+
+
+
 ?>
   </tr>
 </table>
@@ -44,7 +52,7 @@ $db = null;
 
 
 
-<form action="add_name.php" method="post">
+<form action="#" method="post">
 
 <?php
  $FirstName = $LastName = "";
@@ -59,6 +67,49 @@ $db = null;
 <input type="submit" value="Send">
 </form>
 
+<?php #Script for processing form
+process_form();
+
+function process_form()
+{
+  if ($_SERVER["REQUEST_METHOD"] === "POST"){ 
+    $Sirname = $_POST["FirstName"];
+    $Name= $_POST["LastName"];
+
+   
+    try {
+        $user = "php";
+        $password = "phptest";
+        $database = "data";
+        $table = "people";
+        $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "INSERT INTO $table (LastName, FirstName) VALUES ('$Name', '$Sirname')";
+        $db->exec($sql);
+        echo "New record created successfully";
+        #loadAllPeople(); # Need to figure out a way to reload the table as specified above on calling this function - need to think it over
+        $db = null;
+        }   
+
+    catch (PDOException $e) {
+          print "Error!: " . $e->getMessage() . "<br/>";
+          die();
+      }
+
+
+
+
+}
+
+
+
+
+
+
+  
+
+}
+?>
 
 
 
