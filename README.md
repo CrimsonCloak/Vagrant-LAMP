@@ -1,2 +1,2 @@
-# vagrant-ubuntu
-Vagrant files for Ubuntu VM. Using Vagrant, we spin up a configured Ubuntu-VM in VirtualBox.
+# Vagrant-LAMP 
+Vagrant files setting up a LAMP stack in an Ubuntu VM.
