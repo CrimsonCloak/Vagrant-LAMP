@@ -39,12 +39,6 @@ function loadAllPeople(){
 
 
 }
-
-
-
-
-
-
 ?>
   </tr>
 </table>
@@ -54,7 +48,7 @@ function loadAllPeople(){
 
 <form action="#" method="post">
 <fieldset>
-<legend>Add a name to the database</legend>
+<legend>Add or delete user from database</legend>
 
 
 <?php
@@ -67,7 +61,14 @@ function loadAllPeople(){
 <label for="LastName">Last Name:</label> <br>
 <input type="text" name="LastName" id="LastName" placeholder="Last name" required> <br>
 
-<input type="submit" value="Add to database">
+<label for="add">Add user</label>
+<input type="radio" name="selection" id="add" value="add" checked>
+
+<label for="delete">Delete user</label>
+<input type="radio" name="selection" id="delete" value="delete">
+
+<input type="submit" value="Send request">
+
 </fieldset>
 </form>
 
