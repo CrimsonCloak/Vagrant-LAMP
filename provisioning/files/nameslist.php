@@ -58,13 +58,13 @@ function loadAllPeople(){
  $FirstName = $LastName = "";
 ?>
 <label for="FirstName">First Name:</label> <br>
-<input type="text" id="FirstName" name="FirstName" required>
+<input type="text" id="FirstName" name="FirstName" placeholder="First name" required>
 <br>
 
 <label for="LastName">Last Name:</label> <br>
-<input type="text" name="LastName" id="LastNaùe" required> <br>
+<input type="text" name="LastName" id="LastName" placeholder="Last name" required> <br>
 
-<input type="submit" value="Send">
+<input type="submit" value="Add to database">
 </form>
 
 <?php #Script for processing form
@@ -87,7 +87,7 @@ function process_form()
         $sql = "INSERT INTO $table (LastName, FirstName) VALUES ('$Name', '$Sirname')";
         $db->exec($sql);
         echo "New record created successfully";
-        #loadAllPeople(); # Need to figure out a way to reload the table as specified above on calling this function - need to think it over
+        header("Refresh:0");
         $db = null;
         }   
 
@@ -95,19 +95,7 @@ function process_form()
           print "Error!: " . $e->getMessage() . "<br/>";
           die();
       }
-
-
-
-
 }
-
-
-
-
-
-
-  
-
 }
 ?>
 
