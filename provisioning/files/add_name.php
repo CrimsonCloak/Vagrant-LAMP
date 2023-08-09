@@ -19,8 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "INSERT INTO $table (LastName, FirstName) VALUES ('$Name', '$Sirname')";
         $db->exec($sql);
-        echo "New record created successfully";
         $db = null;
+        return "New record created successfully for $Sirname $Name ";
         }   
 
     catch (PDOException $e) {
