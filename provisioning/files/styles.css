@@ -8,6 +8,7 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 50%;
+    margin: 5rem 0rem;
   }
   
   td, th {
@@ -18,4 +19,16 @@ table {
   
   tr:nth-child(even) {
     background-color: #dddddd;
+  }
+  legend {
+    background-color: #000;
+    color: #fff;
+    padding: 3px 6px;
+    margin-top: 2rem;
+  }
+  form{
+    width: fit-content;
+  }
+  input{
+    margin: 0.4rem;
   }

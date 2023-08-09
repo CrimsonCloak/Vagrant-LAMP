@@ -53,6 +53,9 @@ function loadAllPeople(){
 
 
 <form action="#" method="post">
+<fieldset>
+<legend>Add a name to the database</legend>
+
 
 <?php
  $FirstName = $LastName = "";
@@ -65,6 +68,7 @@ function loadAllPeople(){
 <input type="text" name="LastName" id="LastName" placeholder="Last name" required> <br>
 
 <input type="submit" value="Add to database">
+</fieldset>
 </form>
 
 <?php #Script for processing form
