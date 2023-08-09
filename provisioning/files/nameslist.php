@@ -77,7 +77,7 @@ process_form();
 
 function process_form()
 {
-  if ($_SERVER["REQUEST_METHOD"] === "POST"){ 
+  if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST["selection"] === "add"){
     $Sirname = $_POST["FirstName"];
     $Name= $_POST["LastName"];
 
@@ -91,7 +91,6 @@ function process_form()
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "INSERT INTO $table (LastName, FirstName) VALUES ('$Name', '$Sirname')";
         $db->exec($sql);
-        echo "New record created successfully";
         header("Refresh:0");
         $db = null;
         }   
@@ -100,8 +99,33 @@ function process_form()
           print "Error!: " . $e->getMessage() . "<br/>";
           die();
       }
+    }
+
+  if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST["selection"] === "delete")
+    {
+      $Sirname = $_POST["FirstName"];
+      $Name= $_POST["LastName"];  
+      try {
+        $user = "php";
+        $password = "phptest";
+        $database = "data";
+        $table = "people";
+        $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "DELETE FROM $table WHERE LastName ='$Name' AND FirstName ='$Sirname'";
+        $db->exec($sql);
+        header("Refresh:0");
+        $db = null;
+        }   
+
+    catch (PDOException $e) {
+          print "Error!: " . $e->getMessage() . "<br/>";
+          die();
+      }
+    }
+
 }
-}
+
 ?>
 
 
