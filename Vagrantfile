@@ -3,6 +3,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "ubuntu"
   config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.provision :shell, path: "./provisioning/setup.sh"
+  config.vm.boot_timeout = 3000
   config.vm.provider :virtualbox do |vb|
     vb.name = "ubuntu"
     vb.memory = 2048
