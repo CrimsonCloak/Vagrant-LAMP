@@ -10,10 +10,10 @@
 <style><?php include 'styles.css'; ?></style>
 <table>
   <tr>
-    <th>Name</th>
+    <th>Name of employees</th>
   </tr>
 <?php
-echo "<h2>Employees</h2>";
+#echo "<h2>Employees</h2>";
 loadAllPeople();
 function loadAllPeople(){
   $user = "php";
