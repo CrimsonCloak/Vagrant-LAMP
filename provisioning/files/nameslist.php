@@ -8,7 +8,9 @@
 </head>
 <body>
 <style><?php include 'styles.css'; ?></style>
-<form action="#" method="post">
+
+<div id="grid-container">
+<form action="#" method="post" id="grid-item-form">
 <fieldset>
 <legend>Add or delete user from database</legend>
 
@@ -37,7 +39,7 @@
 
 
 
-<table>
+<table id="grid-item-table">
   <tr>
     <th>Name of employees</th>
   </tr>
@@ -72,7 +74,7 @@ function loadAllPeople(){
   </tr>
 </table>
 
-
+</div>
 
 
 
