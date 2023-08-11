@@ -8,6 +8,35 @@
 </head>
 <body>
 <style><?php include 'styles.css'; ?></style>
+<form action="#" method="post">
+<fieldset>
+<legend>Add or delete user from database</legend>
+
+
+<?php
+ $FirstName = $LastName = "";
+?>
+<label for="FirstName">First Name:</label> <br>
+<input type="text" id="FirstName" name="FirstName" placeholder="First name" required>
+<br>
+
+<label for="LastName">Last Name:</label> <br>
+<input type="text" name="LastName" id="LastName" placeholder="Last name" required> <br>
+
+<label for="add">Add user</label>
+<input type="radio" name="selection" id="add" value="add" checked>
+
+<label for="delete">Delete user</label>
+<input type="radio" name="selection" id="delete" value="delete">
+
+<input type="submit" value="Send request">
+
+</fieldset>
+</form>
+
+
+
+
 <table>
   <tr>
     <th>Name of employees</th>
@@ -46,31 +75,6 @@ function loadAllPeople(){
 
 
 
-<form action="#" method="post">
-<fieldset>
-<legend>Add or delete user from database</legend>
-
-
-<?php
- $FirstName = $LastName = "";
-?>
-<label for="FirstName">First Name:</label> <br>
-<input type="text" id="FirstName" name="FirstName" placeholder="First name" required>
-<br>
-
-<label for="LastName">Last Name:</label> <br>
-<input type="text" name="LastName" id="LastName" placeholder="Last name" required> <br>
-
-<label for="add">Add user</label>
-<input type="radio" name="selection" id="add" value="add" checked>
-
-<label for="delete">Delete user</label>
-<input type="radio" name="selection" id="delete" value="delete">
-
-<input type="submit" value="Send request">
-
-</fieldset>
-</form>
 
 <?php #Script for processing form
 process_form();
