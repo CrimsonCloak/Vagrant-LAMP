@@ -1,8 +1,5 @@
 h1{
-    color: red;
-}
-h2{
-    color: green;
+  margin: 1rem;
 }
 table {
     font-family: arial, sans-serif;
@@ -51,6 +48,9 @@ table {
 
     grid-row-start: 1;
     grid-row-end: 2;
-
-
+  }
+  p {
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 1rem;
+    padding: 1rem;
   }
