@@ -174,8 +174,31 @@ function process_form()
     // Process update request
     if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST["update"] === "on")
     {
-      $test = $_POST["update"];
-      echo "$test";
+      {
+        $SirnameOld = $_POST["FirstNameOld"];
+        $NameOld= $_POST["LastNameOld"];  
+        $SirnameNew = $_POST["FirstNameNew"];
+        $NameNew = $_POST["LastNameNew"];
+        try {
+          $user = "php";
+          $password = "phptest";
+          $database = "data";
+          $table = "people";
+          $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+          $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          $sql = "UPDATE $table SET LastName ='$NameNew' , FirstName ='$SirnameNew' WHERE LastName LIKE '$NameOld' AND FirstName LIKE '$SirnameOld' ";
+          $db->exec($sql);
+          header("Refresh:0");
+          $db = null;
+          }   
+  
+      catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+      }
+
+
     }
 
 
