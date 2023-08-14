@@ -60,6 +60,9 @@
 <label for="LastNameNew">Last Name New User:</label> <br>
 <input type="text" name="LastNameNew" id="LastNameNew" placeholder="Last name new user" required> <br>
 
+<label for="Update">Change user</label>
+<input type="checkbox" name="update" id="update" required> <br>
+
 <input type="submit" value="Request Update">
 
 </fieldset>
@@ -116,6 +119,8 @@ process_form();
 
 function process_form()
 {
+
+    // Process add request
   if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST["selection"] === "add"){
     $Sirname = $_POST["FirstName"];
     $Name= $_POST["LastName"];
@@ -140,6 +145,9 @@ function process_form()
       }
     }
 
+
+    // Process delete request
+
   if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST["selection"] === "delete")
     {
       $Sirname = $_POST["FirstName"];
@@ -162,6 +170,15 @@ function process_form()
           die();
       }
     }
+
+    // Process update request
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST["update"] === "on")
+    {
+      $test = $_POST["update"];
+      echo "$test";
+    }
+
+
 
 }
 
