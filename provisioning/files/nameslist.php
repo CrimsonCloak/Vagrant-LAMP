@@ -37,6 +37,39 @@
 </form>
 
 
+<!-- Form for update -->
+<form action="#" method="post" id="grid-item-form-update">
+<fieldset>
+<legend>Update a user in the database</legend>
+
+
+<?php
+ $FirstNameOld = $LastNameOld = $FirstNameNew = $LastNameNew = "";
+?>
+<label for="FirstNameOld">First Name Old User:</label> <br>
+<input type="text" id="FirstNameOld" name="FirstNameOld" placeholder="First name old user" required>
+<br>
+
+<label for="LastNameOld">Last Name New User:</label> <br>
+<input type="text" name="LastNameOld" id="LastNameOld" placeholder="Last name old user" required> <br>
+
+<label for="FirstNameNew">First Name New User:</label> <br>
+<input type="text" id="FirstNameNew" name="FirstNameNew" placeholder="First name new user" required>
+<br>
+
+<label for="LastNameNew">Last Name New User:</label> <br>
+<input type="text" name="LastNameNew" id="LastNameNew" placeholder="Last name new user" required> <br>
+
+<input type="submit" value="Request Update">
+
+</fieldset>
+</form>
+
+
+
+
+
+
 
 
 <table id="grid-item-table">
