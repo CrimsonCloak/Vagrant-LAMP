@@ -18,11 +18,11 @@
 <?php
  $FirstName = $LastName = "";
 ?>
-<label for="FirstName">First Name:</label> <br>
+<label for="FirstName">First name:</label> <br>
 <input type="text" id="FirstName" name="FirstName" placeholder="First name" required>
 <br>
 
-<label for="LastName">Last Name:</label> <br>
+<label for="LastName">Last name:</label> <br>
 <input type="text" name="LastName" id="LastName" placeholder="Last name" required> <br>
 
 <label for="add">Add user</label>
@@ -46,24 +46,24 @@
 <?php
  $FirstNameOld = $LastNameOld = $FirstNameNew = $LastNameNew = "";
 ?>
-<label for="FirstNameOld">First Name Old User:</label> <br>
+<label for="FirstNameOld">First name old user:</label> <br>
 <input type="text" id="FirstNameOld" name="FirstNameOld" placeholder="First name old user" required>
 <br>
 
-<label for="LastNameOld">Last Name New User:</label> <br>
+<label for="LastNameOld">Last name old user:</label> <br>
 <input type="text" name="LastNameOld" id="LastNameOld" placeholder="Last name old user" required> <br>
 
-<label for="FirstNameNew">First Name New User:</label> <br>
+<label for="FirstNameNew">First name new user:</label> <br>
 <input type="text" id="FirstNameNew" name="FirstNameNew" placeholder="First name new user" required>
 <br>
 
-<label for="LastNameNew">Last Name New User:</label> <br>
+<label for="LastNameNew">Last name new user:</label> <br>
 <input type="text" name="LastNameNew" id="LastNameNew" placeholder="Last name new user" required> <br>
 
 <label for="Update">Change user</label>
 <input type="checkbox" name="update" id="update" required> <br>
 
-<input type="submit" value="Request Update">
+<input type="submit" value="Request update">
 
 </fieldset>
 </form>
