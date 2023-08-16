@@ -1,5 +1,5 @@
 # Vagrant-LAMP 
-Vagrant files setting up a LAMP stack in an Ubuntu VM.
+![Image of page on Apache webserver showing the database and options for interacting with it](img/CRUD.png)
 
 ## Structure and setup
 
